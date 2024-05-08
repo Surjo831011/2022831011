@@ -86,21 +86,24 @@ int main(int argc, char* argv[])
             }
             else if (event.type == SDL_KEYDOWN) 
             {
-                switch (event.key.keysym.sym) 
-                {
-                    case SDLK_UP:
-                        controlledCircleY -= 10;
-                        break;
-                    case SDLK_DOWN:
-                        controlledCircleY += 10;
-                        break;
-                    case SDLK_LEFT:
-                        controlledCircleX -= 10;
-                        break;
-                    case SDLK_RIGHT:
-                        controlledCircleX += 10;
-                        break;
-                }
+                if (event.key.keysym.sym == SDLK_UP) 
+            {
+                controlledCircleY -= 10;
+
+            }
+            else if (event.key.keysym.sym == SDLK_DOWN) 
+            {
+                controlledCircleY += 10;
+            }
+            else if (event.key.keysym.sym == SDLK_LEFT) 
+            {
+                controlledCircleX -= 10;
+            }
+            else if (event.key.keysym.sym == SDLK_RIGHT) 
+            {
+                controlledCircleX += 10;
+            }
+
             }
         }
 
