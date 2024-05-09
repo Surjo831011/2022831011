@@ -14,7 +14,7 @@ bool initSDL(SDL_Window** window, SDL_Renderer** renderer)
         return false;
     }
 
-    *window = SDL_CreateWindow("Circle Drawing", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("Circle_Draw", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     if (*window == NULL) 
     {
         printf("Window creation failed: %s\n", SDL_GetError());
@@ -31,7 +31,7 @@ bool initSDL(SDL_Window** window, SDL_Renderer** renderer)
     return true;
 }
 
-void drawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius) 
+void drawing(SDL_Renderer* renderer, int centerX, int centerY, int radius) 
 {
     for (int x = -radius; x <= radius; x++) 
     {
@@ -55,24 +55,24 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    bool running = true;
+    bool game_running = true;
     SDL_Event event;
 
-    while (running) 
+    while (game_running) 
     {
         while (SDL_PollEvent(&event)) 
         {
             if (event.type == SDL_QUIT) 
             {
-                running = false;
+                game_running = false;
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 0, 100, 235, 52);
+        SDL_SetRenderDrawColor(renderer, 255, 0 ,0 , 255);
         SDL_RenderClear(renderer);
 
-        SDL_SetRenderDrawColor(renderer, 244, 51,102,255);
-        drawCircle(renderer, WIDTH / 2, HEIGHT / 2, RADIUS);
+        SDL_SetRenderDrawColor(renderer, 0, 0,255,255);
+        drawing(renderer, WIDTH / 2, HEIGHT / 2, RADIUS);
 
         SDL_RenderPresent(renderer);
     }

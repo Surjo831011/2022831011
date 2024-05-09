@@ -14,7 +14,8 @@ bool initSDL(SDL_Window** window, SDL_Renderer** renderer)
     }
 
     *window = SDL_CreateWindow("Growing Circle", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-    if (*window == NULL) {
+    if (*window == NULL) 
+    {
         printf("Window creation failed: %s\n", SDL_GetError());
         return false;
     }
@@ -29,7 +30,7 @@ bool initSDL(SDL_Window** window, SDL_Renderer** renderer)
     return true;
 }
 
-void drawSolidCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius) 
+void drawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius) 
 {
     for (int x = -radius; x <= radius; x++) 
     {
@@ -55,10 +56,10 @@ int main(int argc, char* argv[])
 
     SDL_Event event;
     bool running = true;
-    int circleRadius = 5; 
+    int circle_Radius = 5; 
     int circleX = WIDTH / 2; 
     int circleY = HEIGHT / 2; 
-    int radiusIncrease = 4; 
+    int increase = 5; 
 
     while (running) 
     {
@@ -71,24 +72,24 @@ int main(int argc, char* argv[])
         }
 
 
-        SDL_SetRenderDrawColor(renderer, 140, 140, 255, 255);
+        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
         SDL_RenderClear(renderer);
 
         
-        SDL_SetRenderDrawColor(renderer, 200, 140, 255, 255);
-        drawSolidCircle(renderer, circleX, circleY, circleRadius);
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        drawCircle(renderer, circleX, circleY, circle_Radius);
 
         
         SDL_RenderPresent(renderer);
 
        
-        circleRadius += radiusIncrease;
+        circle_Radius += increase;
 
         
-        if (circleX + circleRadius >= WIDTH || circleY + circleRadius >= HEIGHT) 
+        if (circleX + circle_Radius >= WIDTH || circleY + circle_Radius >= HEIGHT) 
         {
             
-            circleRadius = 5;
+            circle_Radius = 5;
             circleX = WIDTH / 2;
             circleY = HEIGHT / 2;
         }
